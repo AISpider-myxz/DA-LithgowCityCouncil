@@ -246,7 +246,7 @@ class LithgowSpider(scrapy.Spider):
                 temp_data = int(time.mktime(time_array))
                 item['determined_date'] = temp_data if lodged_date else None
             except:
-                item['determined_date'] = None
+                pass
             item['name_details'] = name_details
             item['properties'] = properties
             item["metadata"]={}
