@@ -237,16 +237,16 @@ class LithgowSpider(scrapy.Spider):
             lodged_date = temp_dick['Lodgement Date'].strip()
             time_array = time.strptime(lodged_date, '%d/%m/%Y')
             temp_data = int(time.mktime(time_array))
-            item['lodged_date'] = temp_data if lodged_date else None
+            item['lodged_date'] = temp_data if lodged_date else 0
 
             item['stage'] = temp_dick['Stage or Decision']
             try :
                 lodged_date = temp_dick['Determined Date'].strip()
                 time_array = time.strptime(lodged_date, '%d/%m/%Y')
                 temp_data = int(time.mktime(time_array))
-                item['determined_date'] = temp_data if lodged_date else None
+                item['determined_date'] = temp_data if lodged_date else 0
             except:
-                pass
+                item['determined_date']=0
             item['name_details'] = name_details
             item['properties'] = properties
             item["metadata"]={}
